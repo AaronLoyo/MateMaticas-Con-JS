@@ -6,13 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-
+        body {
+            display: flex;
+            background-color: cadetblue;
+            align-content: center;
+            justify-content: center;
+        }
+        .opciones {
+            display: flex;
+            justify-content: space-around;
+            position: relative;
+            top: 200px;
+            background-color: cornflowerblue;
+            border-radius: 20px;
+            border: solid 5px rgb(0, 119, 255);
+        }
+        button {
+            margin: 50px;
+            border-radius: 20px;
+            border: none;
+            background-color: rgb(30, 145, 173);
+            padding: 10px;
+        }
+            h1 {
+            position: absolute;
+            top: 20px;
+            font-size: 40px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        button:hover {
+            background-color: blue;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    
+    <h1>MateMaticas Basicas</h1>
+    <div class="opciones">
+        <button id="suma">Suma</button>
+        <button id="resta">Resta</button>
+        <button id="division">Division</button>
+        <button id="multiplicacion">Multiplicacion</button>
+    </div>
 </body>
 <script>
-    
+    var sumaBtn = document.getElementById("suma")
+    var restaBtn = document.getElementById("resta")
+    var divisionBtn = document.getElementById("division")
+    var multiplicacionBtn = document.getElementById("multiplicacion")
+    function MostarSuma() {
+        
+    }
+    function MostarResta() {
+        
+    }
+    function MostarDivision() {
+        
+    }
+    function MostarMultiplicacion() {
+        
+    }
 </script>
 </html>
