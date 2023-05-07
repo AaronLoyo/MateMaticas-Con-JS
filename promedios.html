@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contenido {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(44, 141, 25);
+            margin-left: 500px;
+            margin-right: 500px;
+            border-radius: 30px;
+        }
+        body {
+            background-image: url(imagenes/fondo.webp);
+        }
+        * {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenido">
+        <input id="input1" type="number">
+        <input id="input2"  type="number">
+        <input id="input3"  type="number">
+        <input  id="input4" type="number">
+        <input  id="input5" type="number">
+        <button id="calculo" onclick="MostrarElPromedio()">Promedio</button>
+        <button id="calculo" onclick="MostrarLaMediana()">Mediana</button>
+        <button id="calculo" onclick="MostrarLaModa()">Moda</button>
+        <p id="Parrafo">Promediogod</p>
+    </div>
+</body>
+<script>
+    
+  const PlatziMath = {};
+  
+  PlatziMath.esPar = function esPar(lista) {
+    return !(lista.length % 2);
+  }
+  
+  PlatziMath.esImpar = function esImpar(lista) {
+    return lista.length % 2;
+  }
+  
+  PlatziMath.calcularModa = function calcularModa(lista) {
+    const listaCount = {};
+  
+    for (let i = 0; i < lista.length; i++) {
+      const elemento = lista[i];
+  
+      if (listaCount[elemento]) {
+        listaCount[elemento] += 1;
+      } else {
+        listaCount[elemento] = 1;
+      }
+    }
+  
+    const listaArray = Object.entries(listaCount);
+    const listaOrdenada = ordenarListaBidimensional(listaArray, 1)
+    const listaMaxNumber = listaOrdenada[listaOrdenada.length - 1];
+    const moda = listaMaxNumber[0];
+    return moda;
+  }
+  
+  PlatziMath.calcularMediana = function calcularMediana(listaDesordenada) {
+    const lista = PlatziMath.ordenarLista(listaDesordenada);
+    const listaEsPar = PlatziMath.esPar(lista);
+  
+    if (listaEsPar) {
+      const indexMitad1ListaPar = (5 / 2) - 1;
+      const indexMitad2ListaPar = 5 / 2;
+      const listaMitades = [];
+      listaMitades.push(lista[indexMitad1ListaPar]);
+      listaMitades.push(lista[indexMitad2ListaPar]);
+  
+      const medianaListaPar = PlatziMath.calcularPromedio(listaMitades);
+      return medianaListaPar;
+    } else {
+      const indexMitadListaImpar = Math.floor(5 / 2);
+      const medianaListaImpar = lista[indexMitadListaImpar];
+      console.log(indexMitadListaImpar);
+      console.log(medianaListaImpar);
+      return medianaListaImpar;
+    }
+    }
+  PlatziMath.ordenarLista = function ordenarLista(listaDesordenada) {
+    function ordenarListaSort(valorAcumulado, nuevoValor) {
+      return valorAcumulado - nuevoValor;
+    }
+    
+    const lista = listaDesordenada.sort(ordenarListaSort);
+    
+    return lista;
+  }
+  var ejemplovariablestring = "2"
+    var otravariable = Number(ejemplovariablestring)
+  PlatziMath.ordenarListaBidimensional = function ordenarListaBidimensional(listaDesordenada, i) {
+    function ordenarListaSort(valorAcumulado, nuevoValor) {
+      return valorAcumulado[i] - nuevoValor[i];
+    }
+    
+    const lista = listaDesordenada.sort(ordenarListaSort);
+    return lista;
+  }
+    function MostrarElPromedio() {
+        listaInputs = [Number(document.getElementById("input1").value),Number(document.getElementById("input2").value),Number(document.getElementById("input3").value),Number(document.getElementById("input4").value),Number(document.getElementById("input5").value)]
+     
+        var resultadogod = listaInputs.reduce((a, b) => a + b, 0);
+
+        document.querySelector("#Parrafo").innerHTML = resultadogod/5
+        
+    }
+    function MostrarLaMediana() {
+        listaInputs = [Number(document.getElementById("input1").value),Number(document.getElementById("input2").value),Number(document.getElementById("input3").value),Number(document.getElementById("input4").value),Number(document.getElementById("input5").value)]
+        var InputsMediana = PlatziMath.calcularMediana(listaInputs)
+        document.querySelector("#Parrafo").innerHTML = InputsMediana;
+    }
+    function MostrarLaModa() {
+        listaInputs = [Number(document.getElementById("input1").value),Number(document.getElementById("input2").value),Number(document.getElementById("input3").value),Number(document.getElementById("input4").value),Number(document.getElementById("input5").value)]
+        var InputsModa = PlatziMath.calcularModa(listaInputs)
+        document.querySelector("#Parrafo").innerHTML = InputsMediana;
+    }
+</script>
+
+</html>

@@ -34,9 +34,27 @@
             font-size: 40px;
             font-family: 'Courier New', Courier, monospace;
         }
+        .noned {
+            display: none;
+        }
         button:hover {
             background-color: blue;
             cursor: pointer;
+        }
+        .sumas {
+            display: flex;
+            align-items: normal;
+            justify-content: space-around;
+            margin-top: 200px;
+        }
+        .restasgod {
+            display: flex;
+            align-items: normal;
+            justify-content: space-around;
+            margin-top: 200px;
+        }
+        input {
+            margin:20px;
         }
     </style>
 </head>
@@ -44,27 +62,89 @@
     <h1>MateMaticas Basicas</h1>
     <div class="opciones">
         <button id="suma">Suma</button>
-        <button id="resta">Resta</button>
+        <button onclick="MostrarResta()" id="resta">Resta</button>
         <button id="division">Division</button>
         <button id="multiplicacion">Multiplicacion</button>
+    </div>
+    <div class="noned iden">
+        <input id="input1" type="number">
+        <input id="input2" type="number">
+        <button onclick="sumar()" id="sumar">ok</button>
+        <p id="sumaste"></p>
+    </div>
+    <div id="tata" class="noned">
+        <input id="input3" type="number">
+        <input id="input4" type="number">
+        <button onclick="restar()" id="restar">ok</button>
+        <p id="restaste"></p>
+    </div>
+    <div id="dividir-seccion" class="noned">
+        <input id="input5" type="number">
+        <input id="input6" type="number">
+        <button onclick="Dividir()" id="dividir">ok</button>
+        <p id="dividiste"></p>
+    </div>
+    <div id="multiplicar-seccion" class="noned">
+        <input id="input7" type="number">
+        <input id="input8" type="number">
+        <button onclick="Multiplicar()" id="multiplicar">ok</button>
+        <p id="multiplicaste"></p>
     </div>
 </body>
 <script>
     var sumaBtn = document.getElementById("suma")
+    var sumas = document.getElementById("sumas")
     var restaBtn = document.getElementById("resta")
     var divisionBtn = document.getElementById("division")
     var multiplicacionBtn = document.getElementById("multiplicacion")
     function MostarSuma() {
-        
+        document.querySelector(".opciones").classList.add("noned")
+        document.querySelector(".iden").classList.remove("noned")
+        document.querySelector(".iden").classList.add("sumas")
     }
-    function MostarResta() {
-        
+    function sumar() {
+        let input1 = document.getElementById("input1").value;
+        let input2 = document.getElementById("input2").value;
+        let numero = Number(input1)
+        let numero2 = Number(input2)
+        let result = numero + numero2
+        document.querySelector("#sumaste").innerHTML = result
+    }
+    function MostrarResta() {
+        document.querySelector("#tata").classList.remove("noned")
+        document.querySelector(".opciones").classList.add("noned")
+        document.querySelector("#tata").classList.add("restasgod")
+    }
+    function restar() {
+        var inp = document.getElementById("input3").value;
+        var inp2 = document.getElementById("input4").value;
+        var rest = inp - inp2;
+        document.querySelector("#restaste").innerHTML = rest 
     }
     function MostarDivision() {
-        
+        document.querySelector("#dividir-seccion").classList.remove("noned")
+        document.querySelector(".opciones").classList.add("noned")
+        document.querySelector("#dividir-seccion").classList.add("restasgod")
     }
     function MostarMultiplicacion() {
-        
+        document.querySelector("#multiplicar-seccion").classList.remove("noned")
+        document.querySelector(".opciones").classList.add("noned")
+        document.querySelector("#multiplicar-seccion").classList.add("restasgod")
     }
+    function Dividir() {
+        var inp = document.getElementById("input5").value;
+        var inp2 = document.getElementById("input6").value;
+        var rest = inp / inp2;
+        document.querySelector("#dividir").innerHTML = rest 
+    }
+    function Multiplicar() {
+        var inp = document.getElementById("input7").value;
+        var inp2 = document.getElementById("input8").value;
+        var rest = inp * inp2;
+        document.querySelector("#multiplicaste").innerHTML = rest 
+    }
+    sumaBtn.addEventListener("click", MostarSuma)
+    divisionBtn.addEventListener("click", MostarDivision)
+    multiplicacionBtn.addEventListener("click", MostarMultiplicacion)
 </script>
 </html>
